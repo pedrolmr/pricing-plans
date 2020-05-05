@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
-  return <div className='App'></div>;
-}
+import CardComponent from './components/CardComponent/CardComponent';
+
+import data from './data';
+
+const App = () => {
+  const [cardData, setCardData] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    setCardData(data);
+  }, [cardData]);
+
+  const showModal = () => {
+    setModal(!modal);
+  };
+
+  return (
+    <div className='App'>
+      <CardComponent
+        data={cardData}
+        showModal={() => showModal()}
+        modal={modal}
+      />
+    </div>
+  );
+};
 
 export default App;

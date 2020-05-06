@@ -3,12 +3,12 @@ import './CardComponent.css';
 
 import ModalForm from './../ModalComponent/ModalForm';
 
-const CardComponent = ({ data, modal, showModal }) => {
+const CardComponent = ({ data, modal, toggleModal }) => {
   const [plan, setPlan] = useState({ plan: {} });
 
-  const setPlanId = (planInfo) => {
+  const displayPayment = (planInfo) => {
     setPlan(planInfo);
-    showModal();
+    toggleModal();
   };
   return (
     <div className='card-container'>
@@ -17,10 +17,10 @@ const CardComponent = ({ data, modal, showModal }) => {
           <h2>{card.plan}</h2>
           <p>${card.price}</p>
 
-          <button onClick={() => setPlanId(card)}>Buy</button>
+          <button onClick={() => displayPayment(card)}>Choose</button>
         </div>
       ))}
-      {modal && <ModalForm plan={plan} />}
+      {modal && <ModalForm plan={plan} closeModal={toggleModal} />}
     </div>
   );
 };

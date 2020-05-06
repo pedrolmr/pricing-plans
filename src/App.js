@@ -13,7 +13,7 @@ const App = () => {
     setCardData(data);
   }, [cardData]);
 
-  const showModal = () => {
+  const toggleModal = () => {
     setModal(!modal);
   };
 
@@ -21,7 +21,7 @@ const App = () => {
     <div className='App'>
       <CardComponent
         data={cardData}
-        showModal={() => showModal()}
+        toggleModal={() => toggleModal()}
         modal={modal}
       />
     </div>

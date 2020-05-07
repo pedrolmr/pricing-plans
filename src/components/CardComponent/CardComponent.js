@@ -10,13 +10,18 @@ const CardComponent = ({ data, modal, toggleModal }) => {
     setPlan(planInfo);
     toggleModal();
   };
+  data.map((c) => console.log(c.perks));
   return (
     <div className='card-container'>
       {data.map((card) => (
         <div className='card' key={card.id}>
           <h2>{card.plan}</h2>
           <p>${card.price}</p>
-
+          <div className='perks'>
+            <p>Storage: {card.perks.storage}</p>
+            <p>Users: {card.perks.users}</p>
+            <p>Projects: {card.perks.projects}</p>
+          </div>
           <button onClick={() => displayPayment(card)}>Choose</button>
         </div>
       ))}

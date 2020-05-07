@@ -2,6 +2,14 @@ import React from 'react';
 import './ModalForm.css';
 
 const ModalForm = ({ plan, closeModal }) => {
+  const planClasses =
+    plan.plan === 'bronze'
+      ? 'bronze'
+      : plan.plan === 'silver'
+      ? 'silver'
+      : plan.plan === 'gold'
+      ? 'gold'
+      : '';
   console.log(plan);
   return (
     <div className='modal-overlay'>
@@ -10,9 +18,7 @@ const ModalForm = ({ plan, closeModal }) => {
           X
         </button>
         <div className='header'>
-          <h1>{plan.plan}</h1>
-          <p>${plan.price}</p>
-
+          <h1 className={planClasses}>{plan.plan}</h1>
           <form>
             <label htmlFor='name' id='name'>
               Name:
@@ -28,22 +34,33 @@ const ModalForm = ({ plan, closeModal }) => {
               id='lastname'
               placeholder='Last Name'
             ></input>
-            <label htmlFor='payment'>Choose your payment method</label>
 
-            <select id='payment'>
-              <option value='creditcard'>Credit Card</option>
-              <option value='debitcard'>Debit Card</option>
-            </select>
+            <div className='card-info'>
+              <label htmlFor='payment'>Choose your payment method</label>
 
-            <input
-              type='cardnumber'
-              name='cardnumber'
-              id='cardnumber'
-              placeholder='Card number'
-            ></input>
-            <input type='exp' name='exp' id='exp' placeholder='MM/YY'></input>
-            <input type='cvc' name='cvc' id='cvc' placeholder='CVC'></input>
+              <select id='payment'>
+                <option value='creditcard'>Credit Card</option>
+                <option value='debitcard'>Debit Card</option>
+              </select>
+
+              <div className='card-input'>
+                <input
+                  type='cardnumber'
+                  name='cardnumber'
+                  id='cardnumber'
+                  placeholder='Card number'
+                ></input>
+                <input
+                  type='exp'
+                  name='exp'
+                  id='exp'
+                  placeholder='MM/YY'
+                ></input>
+                <input type='cvc' name='cvc' id='cvc' placeholder='CVC'></input>
+              </div>
+            </div>
           </form>
+          <button>Pay: ${plan.price}</button>
         </div>
       </div>
     </div>

@@ -72,12 +72,15 @@
 .card-container .card .perks {
   display: flex;
   flex-direction: column;
-  line-height: 3rem;
+  /* line-height: 3rem; */
+  align-content: center;
 }
 .card-container .card .perks p {
   border-bottom: 1px solid #d7d7d7;
   font-size: 0.8rem;
   font-weight: 100;
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 
 .card-container .card button {
